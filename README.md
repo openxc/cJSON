@@ -1,25 +1,3 @@
-
-  Copyright (c) 2009 Dave Gamble
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-
-
 Welcome to cJSON.
 -----------------
 
@@ -49,12 +27,12 @@ Some JSON:
 ----------
 
     {
-        "name": "Jack (\"Bee\") Nimble", 
+        "name": "Jack (\"Bee\") Nimble",
         "format": {
-            "type":       "rect", 
-            "width":      1920, 
-            "height":     1080, 
-            "interlace":  false, 
+            "type":       "rect",
+            "width":      1920,
+            "height":     1080,
+            "interlace":  false,
             "frame rate": 24
         }
     }
@@ -87,7 +65,7 @@ That's AUTO mode. If you're going to use Auto mode, you really ought to check po
 before you dereference them. If you want to see how you'd build this struct in code?
 
     cJSON *root,*fmt;
-    root = cJSON_CreateObject();  
+    root = cJSON_CreateObject();
     cJSON_AddItemToObject(root, "name", cJSON_CreateString("Jack (\"Bee\") Nimble"));
     cJSON_AddItemToObject(root, "format", fmt = cJSON_CreateObject());
     cJSON_AddStringToObject(fmt, "type", "rect");
@@ -189,7 +167,7 @@ You'd use:
       for (i = 0 ; i < cJSON_GetArraySize(item) ; i++)
       {
         cJSON * subitem = cJSON_GetArrayItem(item, i);
-        // handle subitem.  
+        // handle subitem.
       }
     }
 
@@ -202,7 +180,7 @@ Or, for PROPER manual mode:
       {
         // handle subitem
         if (subitem->child) parse_object(subitem->child);
-    
+
         subitem = subitem->next;
       }
     }
@@ -232,7 +210,7 @@ For instance, suppose you wanted to build an array of objects?
       }
       return root;
     }
-  
+
 and simply: Create_array_of_anything(objects, 24);
 
 cJSON doesn't make any assumptions about what order you create things in.
@@ -249,3 +227,28 @@ Enjoy cJSON!
 -----------------------
 
 - Dave Gamble, Aug 2009
+
+License
+-------
+
+cJSON is distributed under the MIT open source license.
+
+Copyright (c) 2009 Dave Gamble
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
